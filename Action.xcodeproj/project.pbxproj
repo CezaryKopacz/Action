@@ -12,6 +12,9 @@
 		BE73AD381CDCEAE0006F8B98 /* AlertAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE73AD341CDCEAE0006F8B98 /* AlertAction.swift */; };
 		BE73AD391CDCEAE0006F8B98 /* UIBarButtonItem+Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE73AD351CDCEAE0006F8B98 /* UIBarButtonItem+Action.swift */; };
 		BE73AD3A1CDCEAE0006F8B98 /* UIButton+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE73AD361CDCEAE0006F8B98 /* UIButton+Rx.swift */; };
+		BE73AD3D1CDCF5E0006F8B98 /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE73AD3C1CDCF5E0006F8B98 /* RxBlocking.framework */; };
+		BE73AD3F1CDCF5F0006F8B98 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE73AD3E1CDCF5F0006F8B98 /* RxCocoa.framework */; };
+		BE73AD411CDCF5FE006F8B98 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE73AD401CDCF5FE006F8B98 /* RxSwift.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		BE73AD341CDCEAE0006F8B98 /* AlertAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertAction.swift; sourceTree = SOURCE_ROOT; };
 		BE73AD351CDCEAE0006F8B98 /* UIBarButtonItem+Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Action.swift"; sourceTree = SOURCE_ROOT; };
 		BE73AD361CDCEAE0006F8B98 /* UIButton+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Rx.swift"; sourceTree = SOURCE_ROOT; };
+		BE73AD3C1CDCF5E0006F8B98 /* RxBlocking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBlocking.framework; path = Carthage/Build/iOS/RxBlocking.framework; sourceTree = "<group>"; };
+		BE73AD3E1CDCF5F0006F8B98 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		BE73AD401CDCF5FE006F8B98 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +35,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE73AD411CDCF5FE006F8B98 /* RxSwift.framework in Frameworks */,
+				BE73AD3F1CDCF5F0006F8B98 /* RxCocoa.framework in Frameworks */,
+				BE73AD3D1CDCF5E0006F8B98 /* RxBlocking.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -38,6 +47,9 @@
 		BE73AD161CDCD101006F8B98 = {
 			isa = PBXGroup;
 			children = (
+				BE73AD401CDCF5FE006F8B98 /* RxSwift.framework */,
+				BE73AD3E1CDCF5F0006F8B98 /* RxCocoa.framework */,
+				BE73AD3C1CDCF5E0006F8B98 /* RxBlocking.framework */,
 				BE73AD221CDCD102006F8B98 /* Action */,
 				BE73AD211CDCD101006F8B98 /* Products */,
 			);
@@ -86,6 +98,7 @@
 				BE73AD1C1CDCD101006F8B98 /* Frameworks */,
 				BE73AD1D1CDCD101006F8B98 /* Headers */,
 				BE73AD1E1CDCD101006F8B98 /* Resources */,
+				BE73AD3B1CDCF52C006F8B98 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -136,6 +149,25 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		BE73AD3B1CDCF52C006F8B98 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxBlocking.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BE73AD1B1CDCD101006F8B98 /* Sources */ = {
@@ -251,6 +283,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Action/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -269,6 +305,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Action/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
